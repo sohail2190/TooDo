@@ -1,16 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import './App.css';
+import TooDoInput from "./TooDoInput";
+import TooDoList from "./TooDoList";
 
-function App() {
-  
+function App(){
 
-  return (
+  const [listTodo, setListTodo] = useState([]);
+  let addList = (inputText) =>{
+    setListTodo(...listTodo, inputText);
+  }
+
+  return(
     <>
-      
+    <div className="main-container">
+      <div className="center-container">
+
+        <TooDoInput  addList={addList}/>
+        <TooDoList />
+
+      </div>
+    </div>
     </>
   )
 }
-
-export default App
+export default App;
