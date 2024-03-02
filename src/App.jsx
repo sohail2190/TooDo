@@ -7,8 +7,17 @@ function App(){
 
   const [listTodo, setListTodo] = useState([]);
   let addList = (inputText) =>{
-    setListTodo(...listTodo, inputText);
+    if(inputText !== '')
+      setListTodo([...listTodo, inputText]);
   }
+
+  const deleteListItem = (key) =>{
+    let newListTodo = [...listTodo];
+    newListTodo.splice(key,1);
+    setListTodo([...newListTodo])
+
+  }
+  
 
   return(
     <>
@@ -16,7 +25,14 @@ function App(){
       <div className="center-container">
 
         <TooDoInput  addList={addList}/>
-        <TooDoList />
+
+        <h1 className="app-heading">ToDo</h1>
+        <hr/>
+
+        {listTodo.map((listItem, i) => (
+  <TooDoList key={`${listItem}-${i}`} item={listItem} index={i} deleteItem={deleteListItem} />
+))}
+
 
       </div>
     </div>

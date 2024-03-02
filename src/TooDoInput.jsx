@@ -3,6 +3,12 @@ import React, { useState } from 'react'
 function TooDoInput(props) {
 
     const [inputText, setInputText] = useState('');
+    const handleEnterPress = (e) =>{
+        if(e.keyCode ==13){
+            props.addList(inputText)
+            setInputText('');
+        }
+    }
 
   return (
     <div className="input-container">
@@ -11,7 +17,9 @@ function TooDoInput(props) {
         value={inputText}
         onChange={ e=>{
             setInputText(e.target.value);
-        }}/>
+        }}
+        onKeyDown = {handleEnterPress}
+        />
         <button className='add-btn' onClick={ ()=>{
             props.addList(inputText)
             setInputText('');

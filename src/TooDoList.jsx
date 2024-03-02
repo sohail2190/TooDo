@@ -4,7 +4,12 @@ function TooDoList(props) {
   return (
 
     <li className="list-item">
-        item 1 
+        {props.item}
+        <span className='icons'> <i className="fa-solid fa-trash-can icon-delete"
+        onClick={e =>{
+            props.deleteItem(props.index)
+        }}
+        > </i></span>
     </li>
 
   )
